@@ -7,6 +7,7 @@ public class ShoppingCartDriver
 
 	  public static void main(String[] args) 
 	  {
+		  System.out.println("??");
 		// TODO Auto-generated method stub
 		
 		//Open file; file name specified in args (command line)
