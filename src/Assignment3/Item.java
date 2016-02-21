@@ -1,22 +1,45 @@
 package Assignment3;
 
+import java.util.Locale;
+import java.text.NumberFormat;
+
 public class Item 
 {
-//Declare variables for this class. Think about its type: public, protected or private?
 
-// You will need a constructor (Why?). Create it here.
-	
-	float calculatePrice () 
+	protected String name;
+	protected double price;
+	protected double weight;
+	protected int quantity;
+
+	public Item(String name, double price, int quantity, double weight)
 	{
-		float final_price = 0;
-		// Insert price calculation here
+		this.name = name;
+		this.price = price;
+		this.weight = weight;
+		this.quantity = quantity;
+	}
+	
+	public void update(int quantity)
+	{
+		this.quantity = quantity;
+	}
+
+	public double calculatePrice()
+	{
+		double shipping = quantity * weight * 20.0;
+		double tax = 0.10;
+		double final_price = (shipping + quantity * price) * (tax + 1);
 		return final_price;
 	}
 	
-
-	void printItemAttributes () 
+	public String printItemAttributes() 
 	{
-		//Print all applicable attributes of this class
+		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+		return String.format("Item %s:\n\tPrice:      %s\n\tQuantity:   %d\n\tWeight:     %d\n\tTotal cost: %s\n",
+			name,
+			nf.format(price),
+			quantity,
+			(int)weight,
+			nf.format(calculatePrice()));
 	}
-
 }
