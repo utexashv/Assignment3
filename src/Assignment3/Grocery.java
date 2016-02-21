@@ -1,9 +1,38 @@
 package Assignment3;
 
-public class Grocery extends Item {
-	//variables, constructor here
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class Grocery extends Item
+{
+	protected boolean perishable;
 	
-	//override calculatePrice() if necessary; Implement print methods as necessary	
-	// Only re-implement stuff you cannot get from the superclass (Item)
-	
+	public Grocery(String name, double price, int quantity, double weight, boolean perishable)
+	{
+		super(name, price, quantity, weight);
+		this.perishable = perishable;
+	}
+
+	public double calculatePrice () 
+	{
+		double shipping = quantity * weight * 20.0;
+		if (perishable) 
+		{
+			shipping = shipping * 1.20;
+		}
+		double final_price = shipping + quantity * price;
+		return final_price;
+	}
+
+	public String printItemAttributes () 
+	{
+		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+		return String.format("Item %s:\n\tPrice:      %s\n\tQuantity:   %d\n\tWeight:     %d\n\tPerishable: %b\n\tTotal cost: %s\n",
+			name,
+			nf.format(price),
+			quantity,
+			(int)weight,
+			perishable,
+			nf.format(calculatePrice()));
+	}
 }
