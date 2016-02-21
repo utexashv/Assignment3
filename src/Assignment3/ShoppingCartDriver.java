@@ -94,7 +94,7 @@ public class ShoppingCartDriver
 	 * 
 	 * @param command command of the file
 	 * @return inserts an item into the cart and prints out statement
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	public static String parseInsert(String[] command) throws Exception
 	{
@@ -103,11 +103,17 @@ public class ShoppingCartDriver
 		return String.format("Inserted %s into ShoppingCart", item.name);
 	}
 
+	/**
+	 * 
+	 * @param command command of the file
+	 * @return deletes an item and prints out statement
+	 * @throws Exception
+	 */
 	public static String parseDelete(String[] command) throws Exception
 	{
 		if (command.length != 2) 
 		{
-			throw new Exception("Wrong number of arguments");
+			throw new Exception("Wrong number of arguments. Needs to have 2.");
 		}
 		String name = command[1];
 		if (ShoppingCart.containsKey(name)) 
@@ -117,45 +123,73 @@ public class ShoppingCartDriver
 		} 
 		else 
 		{
-			return "Item not found in ShoppingCart";
+			return "Cannot delete item because it is not in the shopping cart.";
 		}
 	}
 
+	/**
+	 * 
+	 * @param command command of the file
+	 * @return searches for item and prints out the attributes
+	 * @throws Exception Item isn't in the cart
+	 */
 	public static String parseSearch(String[] command) throws Exception
 	{
-		if (command.length != 2) {
-			throw new Exception("Wrong number of arguments");
+		if (command.length != 2)
+		{
+			throw new Exception("Wrong number of arguments. Needs to have 2.");
 		}
 		String name = command[1];
-		if (ShoppingCart.containsKey(name)) {
+		if (ShoppingCart.containsKey(name))
+		{
 			return ShoppingCart.get(name).printItemAttributes();
-		} else {
-			return "Item not found in ShoppingCart";
+		} 
+		else
+		{
+			return "That item is not in the shopping cart";
 		}
 	}
 
+	/**
+	 * 
+	 * @param command command in the file
+	 * @return updated version of the item
+	 * @throws Exception if the item is not in the cart
+	 */
 	public static String parseUpdate(String[] command) throws Exception
 	{
-		if (command.length != 3) {
-			throw new Exception("Wrong number of arguments");
+		if (command.length != 3) 
+		{
+			throw new Exception("Wrong number of arguments. Needs to have 3.");
 		}
 		String name = command[1];
 		int quantity = Integer.parseInt(command[2]);
-		if (ShoppingCart.containsKey(name)) {
+		if (ShoppingCart.containsKey(name)) 
+		{
 			ShoppingCart.get(name).update(quantity);
 			return String.format("Updated quantity of %s to %d", name, quantity);
-		} else {
-			return "Item not found in ShoppingCart";
+		} 
+		else 
+		{
+			return "Cannot update because item is not in the shopping cart.";
 		}
 	}
 
+	/**
+	 * 
+	 * @param command command of the file
+	 * @return prints out the attributes of the item
+	 * @throws Exception
+	 */
 	public static String parsePrint(String[] command) throws Exception
 	{
-		if (command.length != 1) {
-			throw new Exception("Wrong number of arguments");
+		if (command.length != 1) 
+		{
+			throw new Exception("Wrong number of arguments. Needs to have 1.");
 		}
 		StringBuilder output = new StringBuilder();
-		for (Item item : ShoppingCart.values()) {
+		for (Item item : ShoppingCart.values()) 
+		{
 			output.append(item.printItemAttributes());
 		}
 		return output.toString();
