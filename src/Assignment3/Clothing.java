@@ -2,20 +2,15 @@ package Assignment3;
 
 public class Clothing extends Item 
 {
-
-	// variables, constructors as necessary
-	
-	float calculatePrice () 
+	/**
+	 * 
+	 * @param name name of the clothing
+	 * @param price price of the clothing
+	 * @param quantity clothing quantity
+	 * @param weight clothing weight
+	 */
+	public Clothing(String name, double price, int quantity, double weight)
 	{
-		float final_price = 0;
-		// Insert price calculation here
-		return final_price;
+		super(name, price, quantity, weight);
 	}
-	
-	void printItemAttributes () 
-	{
-		//Print all applicable attributes of this sub-class
-	}
-	
-
 }

@@ -17,6 +17,16 @@ public class Electronics extends Item
 	protected String state;
 	protected boolean fragile;
 	
+	/**
+	 * 
+	 * @param name name of the electronic
+	 * @param price price of the electronic
+	 * @param quantity quantity of electronics
+	 * @param weight electronic weight
+	 * @param fragile tells if electronic is fragile or not
+	 * @param state what state the electronic was from
+	 * @throws Exception If the state is not a state
+	 */
 	public Electronics(String name, double price, int quantity, double weight, boolean fragile, String state) throws Exception
 	{
 		super(name, price, quantity, weight);
@@ -28,6 +38,10 @@ public class Electronics extends Item
 		this.state = state;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see Assignment3.Item#calculatePrice()
+	 */
 	public double calculatePrice () 
 	{
 		double shipping = 20.0 * quantity * weight;
@@ -36,15 +50,22 @@ public class Electronics extends Item
 			shipping = shipping * 1.20;
 		}
 		double tax = getStateTax();
-		double final_price = (shipping + quantity * price) * (1 + tax);
+		double final_price = (shipping + quantity * price) * (tax + 1);
 		return final_price;
 	}
 
+	/*
+	 * Gets the state tax if there is one
+	 */
 	protected double getStateTax()
 	{
 		return (STATE_SET_FREE.contains(state)) ? 0.0 : 0.10;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see Assignment3.Item#printItemAttributes()
+	 */
 	public String printItemAttributes () 
 	{
 		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);

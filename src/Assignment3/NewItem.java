@@ -13,6 +13,9 @@ public class NewItem
 		double price = Double.parseDouble(command[3]);
 		int quantity = Integer.parseInt(command[4]);
 		double weight = Double.parseDouble(command[5]);
+		/* 
+		 * Checks for errors within clothing
+		 */
 		if (command[1].equals("clothing")) 
 		
 		{
@@ -22,6 +25,9 @@ public class NewItem
 			}
 			return new Clothing(name, price, quantity, weight);
 		} 
+		/* 
+		 * Checks for errors within electronics
+		 */
 		else if (command[1].equals("electronics")) 
 		{
 			if (command.length != 8)
@@ -44,6 +50,9 @@ public class NewItem
 			}
 			return new Electronics(name, price, quantity, weight, fragile, state);
 		} 
+		/* 
+		 * Checks for errors within groceries
+		 */
 		else if (command[1].equals("groceries")) 
 		{
 			if (command.length != 7) 
@@ -65,6 +74,9 @@ public class NewItem
 			}
 			return new Grocery(name, price, quantity, weight, perishable);
 		} 
+		/* 
+		 * Checks for errors if it not a valid product catergory
+		 */
 		else 
 		{
 			throw new Exception("Not a valid category");
