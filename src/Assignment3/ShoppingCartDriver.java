@@ -59,10 +59,10 @@ public class ShoppingCartDriver
 	 */
 	public static String processCommand(String line) throws Exception
 	{
-		String[] command = line.toLowerCase().split(" ");
+		String[] command = line.toLowerCase().split(" ");  // splits each line at the spaces
 		if (command.length > 8) 
 		{
-			throw new Exception("Wrong number of arguments");
+			throw new Exception("Wrong number of arguments. Does not require over 8 arguments.");
 		} 
 		else if (command[0].equals("insert")) 
 		{
