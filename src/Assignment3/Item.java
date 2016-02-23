@@ -1,3 +1,8 @@
+/* Vo, Henry
+ * hv3364
+ * EE422C-Assignment 3
+ */
+
 package Assignment3;
 
 import java.util.Locale;
