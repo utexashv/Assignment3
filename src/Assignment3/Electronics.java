@@ -1,6 +1,7 @@
-/* Vo, Henry
- * hv3364
- * EE422C-Assignment 3
+/* Vo, Henry & Spearing, Michael
+ * HV3364, MSS3627
+ * EE422C - Assignment 3
+ * February 2016
  */
 
 package Assignment3;
@@ -13,7 +14,6 @@ import java.text.NumberFormat;
 
 public class Electronics extends Item 
 {
-
 	protected static final String[] STATE_FREE_TAX = new String[] {"tx", "nm", "va", "az", "ak"};
 	protected static final String[] ALL_STATES = new String[] {"al", "ak", "as", "az", "ar", "ca", "co", "ct", "de", "dc", "fm", "fl", "ga", "gu", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "mh", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "mp", "oh", "ok", "or", "pw", "pa", "pr", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "vi", "va", "wa", "wv", "wi", "wy"};
 	protected static final Set<String> STATE_SET_ALL = new HashSet<String>(Arrays.asList(ALL_STATES));
@@ -22,16 +22,21 @@ public class Electronics extends Item
 	protected String state;
 	protected boolean fragile;
 	
-	/**
-	 * 
-	 * @param name name of the electronic
-	 * @param price price of the electronic
-	 * @param quantity quantity of electronics
-	 * @param weight electronic weight
-	 * @param fragile tells if electronic is fragile or not
-	 * @param state what state the electronic was from
-	 * @throws Exception If the state is not a state
-	 */
+	/***********************************************************************************************************************
+	* NAME:				Electronics(String name, double price, int quantity, double weight, boolean fragile, String state)
+	* DESCRIPTION:		Electronics Extends Item - Electronics is a type of Item
+	* 					Relies on the superclass Item
+	* INPUTS:			name
+	* 					price
+	* 					quantity
+	* 					weight
+	* 					fragile
+	* 					state
+	* THROWS:			Exception This is not a State
+	* OUTPUTS			None
+	* PROCESS :			[1] amends the fragility of the item
+	* 					[2] Processes State
+	************************************************************************************************************************/
 	public Electronics(String name, double price, int quantity, double weight, boolean fragile, String state) throws Exception
 	{
 		super(name, price, quantity, weight);
@@ -43,10 +48,17 @@ public class Electronics extends Item
 		this.state = state;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see Assignment3.Item#calculatePrice()
-	 */
+	/********************************************************************************
+	* NAME:				double calculatePrice()
+	* DESCRIPTION:		Calculates the final price after tax and shipping
+	* INPUTS:			None		
+	* OUTPUTS			double
+	* PROCESS :			
+	* 					[1] Calculate the shipping
+	* 					[2] Calculate the tax
+	* 					[3] Add tax and shipping to original price
+	* 					[4] Return Final price 
+	**********************************************************************************/
 	public double calculatePrice () 
 	{
 		double shipping = 20.0 * quantity * weight;
@@ -67,10 +79,16 @@ public class Electronics extends Item
 		return (STATE_SET_FREE.contains(state)) ? 0.0 : 0.10;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see Assignment3.Item#printItemAttributes()
-	 */
+	/********************************************************************************
+	* NAME:				String printItemAttributes()
+	* DESCRIPTION:		Compiles and returns all the pieces of the item in a formatted
+	* 					string that can be printed
+	* INPUTS:			None
+	* OUTPUTS			String
+	* PROCESS :			
+	* 					[1] Format the String with all the data
+	* 					[2] Return the string
+	**********************************************************************************/
 	public String printItemAttributes () 
 	{
 		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);

@@ -1,13 +1,30 @@
-/* Vo, Henry
- * hv3364
- * EE422C-Assignment 3
+/* Vo, Henry & Spearing, Michael
+ * HV3364, MSS3627
+ * EE422C - Assignment 3
+ * February 2016
  */
 
 package Assignment3;
 
 public class NewItem
 {
-
+	
+	/********************************************************************************
+	* NAME:				Item createItem(String[] command)
+	* DESCRIPTION:		Creates a new Item and applies necesary restrictions
+	* INPUTS:			String[] command		
+	* OUTPUTS			Item
+	* THROWS:			Exception Wrong Number of Arguments
+	* 					Exception Fragility Unknown
+	* 					Exception Perishability Unknown
+	* 					Exception Not a valid category
+	* PROCESS :			
+	* 					[1] Break the String[] down into the necessary information
+	* 					[2] Make sure there are enough arguments for the desired item type
+	* 					[3] Create an Item of the proper type
+	* 					[4] Assign given values to the item
+	* 					[5] Return the Item
+	**********************************************************************************/
 	public static Item createItem(String[] command) throws Exception
 	{
 		if (command.length < 6) 

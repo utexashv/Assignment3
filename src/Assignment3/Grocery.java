@@ -1,6 +1,7 @@
-/* Vo, Henry
- * hv3364
- * EE422C-Assignment 3
+/* Vo, Henry & Spearing, Michael
+ * HV3364, MSS3627
+ * EE422C - Assignment 3
+ * February 2016
  */
 
 package Assignment3;
@@ -12,6 +13,18 @@ public class Grocery extends Item
 {
 	protected boolean perishable;
 	
+	/********************************************************************************************************
+	* NAME:				Grocery(String name, double price, int quantity, double weight, boolean perishable)
+	* DESCRIPTION:		Grocery Extends Item - Grocery is a type of Item
+	* 					Relies on the superclass Item
+	* INPUTS:			name
+	* 					price
+	* 					quantity
+	* 					weight
+	* 					perishable
+	* OUTPUTS			None
+	* PROCESS :			[1] amends the perishable of the item
+	***********************************************************************************************************/
 	/**
 	 * 
 	 * @param name Name of the grocery
@@ -26,10 +39,16 @@ public class Grocery extends Item
 		this.perishable = perishable;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see Assignment3.Item#calculatePrice()
-	 */
+	/********************************************************************************
+	* NAME:				double calculatePrice()
+	* DESCRIPTION:		Calculates the final price after shipping
+	* INPUTS:			None		
+	* OUTPUTS			double
+	* PROCESS :			
+	* 					[1] Calculate the shipping
+	* 					[2] Add shipping to original price
+	* 					[3] Return Final price 
+	**********************************************************************************/
 	public double calculatePrice () 
 	{
 		double shipping = quantity * weight * 20.0;
@@ -41,10 +60,16 @@ public class Grocery extends Item
 		return final_price;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see Assignment3.Item#printItemAttributes()
-	 */
+	/********************************************************************************
+	* NAME:				String printItemAttributes()
+	* DESCRIPTION:		Compiles and returns all the pieces of the item in a formatted
+	* 					string that can be printed
+	* INPUTS:			None
+	* OUTPUTS			String
+	* PROCESS :			
+	* 					[1] Format the String with all the data
+	* 					[2] Return the string
+	**********************************************************************************/
 	public String printItemAttributes () 
 	{
 		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
